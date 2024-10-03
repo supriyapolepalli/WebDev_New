@@ -1,0 +1,65 @@
+﻿@page
+@model ManagementEvent.Pages.EventAttendees.IndexModel
+
+@{
+    ViewData["Title"] = "Event Attendees";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EventAttendee[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventAttendee[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventAttendee[0].TargetBudget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventAttendee[0].OptionalArrivalDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventAttendee[0].Event)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventAttendee[0].EventType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.EventAttendee) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TargetBudget)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OptionalArrivalDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Id)
+            </td>
+                @* Remove EventId *@
+                @* EventID</th> *@
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
